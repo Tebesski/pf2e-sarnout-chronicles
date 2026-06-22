@@ -1,0 +1,91 @@
+{
+   "id": "pf2e-sarnout-chronicles",
+   "title": "PF2e Sarnout Chronicles",
+   "description": "Homebrew automation and Compendiums for Allods: Sarnout Chronicles.",
+   "version": "#{VERSION}#",
+   "compatibility": {
+      "minimum": "14",
+      "verified": "14"
+   },
+   "authors": [
+      {
+         "name": "Aztec",
+         "discord": "two.bears.high.fiving"
+      }
+   ],
+   "esmodules": ["scripts/module.mjs"],
+   "socket": true,
+   "relationships": {
+      "requires": [
+         {
+            "id": "socketlib",
+            "type": "module"
+         }
+      ]
+   },
+   "styles": ["styles/module.css"],
+   "languages": [
+      {
+         "lang": "en",
+         "name": "English",
+         "path": "lang/en.json"
+      },
+      {
+         "lang": "ru",
+         "name": "Русский",
+         "path": "lang/ru.json"
+      }
+   ],
+   "url": "#{URL}#",
+   "manifest": "#{MANIFEST}#",
+   "download": "#{DOWNLOAD}#",
+   "packFolders": [
+      {
+         "name": "Sarnout Chronicles",
+         "sorting": "m",
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         },
+         "folders": [
+            {
+               "name": "Archetypes",
+               "sorting": "m",
+               "folders": [
+                  {
+                     "name": "Templar",
+                     "sorting": "m",
+                     "packs": ["templar-feats", "templar-macros"]
+                  }
+               ]
+            }
+         ]
+      }
+   ],
+   "packs": [
+      {
+         "name": "templar-feats",
+         "label": "Feats",
+         "path": "packs/db/Archetypes/Templar/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "templar-macros",
+         "label": "Macros",
+         "path": "packs/db/Archetypes/Templar/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      }
+   ]
+}

@@ -1,0 +1,18 @@
+<div class="pf2e chat-card item-card atw-mtcard atw-damage-card ssc-templar-ability-card ssc-templar-save-card" data-ssc-templar-card-type="{{type}}">
+   <header class="card-header flexrow">
+      <div class="ssc-templar-card-icon">
+         <img src="{{icon}}" alt="{{title}}">
+      </div>
+      <h3>{{title}}</h3>
+   </header>
+   <section class="card-content ssc-templar-card-summary">
+      <p>{{summary}}</p>
+      <p><strong>{{defenseLabel}}:</strong> {{defenseText}} &middot; <strong>{{dcText}}</strong></p>
+      {{{traitsHtml}}}
+   </section>
+   {{{damageHtml}}}
+   {{{counteractHtml}}}
+   <div class="pf2e-toolbelt-target-targetRows pf2e-toolbelt-target-damage ssc-templar-card-targets">
+      {{{targetsHtml}}}
+   </div>
+</div>

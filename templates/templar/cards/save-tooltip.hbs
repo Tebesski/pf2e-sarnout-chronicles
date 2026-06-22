@@ -1,0 +1,9 @@
+<div class="pf2e-toolbelt-target-save">
+   <div>{{dcText}}</div>
+   {{#if hasRoll}}
+      <div class="result">
+         {{resultLabel}} (<i class="fa-solid fa-dice-d20"></i> {{d20}}) {{outcomeLabel}}{{#if diffText}} {{diffText}}{{/if}}
+      </div>
+      <div class="note"><i class="fa-solid fa-rotate rotate"></i> {{rerollHint}}</div>
+   {{/if}}
+</div>

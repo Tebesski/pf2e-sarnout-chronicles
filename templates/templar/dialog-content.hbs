@@ -1,0 +1,14 @@
+{{#each paragraphs}}
+   <p>{{#if html}}{{{text}}}{{else}}{{text}}{{/if}}</p>
+{{/each}}
+
+{{#if facts.length}}
+   <dl class="ssc-templar-facts">
+      {{#each facts}}
+         <div>
+            <dt>{{label}}</dt>
+            <dd>{{#if html}}{{{value}}}{{else}}{{value}}{{/if}}</dd>
+         </div>
+      {{/each}}
+   </dl>
+{{/if}}

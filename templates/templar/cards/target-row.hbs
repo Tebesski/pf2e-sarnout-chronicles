@@ -1,0 +1,26 @@
+<div class="target-row ssc-templar-card-target-row {{#if criticalSuccess}}crit-success-row{{/if}}"
+   data-target-uuid="{{uuid}}"
+   data-rolled="{{rolled}}"
+   data-outcome="{{outcomeClass}}">
+   <hr>
+   <div class="target-header">
+      <span class="name"><i class="fa-solid fa-person"></i>{{name}}</span>
+      <span class="controls" data-tooltip-class="pf2e">
+         <a class="{{rollClass}} atw-mtcard-roll-save"
+            data-ssc-templar-card-role="{{rollRole}}"
+            data-ssc-templar-card-action="roll-save"
+            data-statistic="{{saveType}}"
+            data-dc="{{dc}}"
+            data-tooltip="{{tooltip}}">
+            <i class="save fa-solid fa-person-running"></i>
+            <i class="fa-solid fa-dice-d20 die{{#if hideDie}} hidden{{/if}}"></i>
+            <span class="degree show {{degreeClass}}">{{total}}</span>
+         </a>
+      </span>
+   </div>
+   <div class="ssc-templar-card-target-note{{#unless noteHtml}} hidden{{/unless}}">{{{noteHtml}}}</div>
+   <section class="damage-application small atw-mtcard-apply ssc-templar-card-application{{applicationHidden}}{{applicationOutcome}}{{#if damageApplied}} applied{{/if}}"
+      data-target-uuid="{{uuid}}">
+      {{{damageButtonsHtml}}}
+   </section>
+</div>

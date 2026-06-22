@@ -1,0 +1,19 @@
+<div class="ssc-choice-body">
+   {{{content}}}
+   <footer>
+      {{#each buttons}}
+         {{#if glyphOnly}}
+            <span data-choice="{{id}}" class="ssc-action-glyph-choice{{#if disabled}} disabled{{/if}}" role="button" tabindex="{{#if disabled}}-1{{else}}0{{/if}}" title="{{ariaLabel}}" aria-label="{{ariaLabel}}" {{#if disabled}}aria-disabled="true"{{/if}}>
+               {{#if glyph}}<span class="action-glyph">{{glyph}}</span>{{/if}}
+            </span>
+         {{else}}
+            <button type="button" data-choice="{{id}}" {{#unless label}}class="ssc-icon-button" title="{{ariaLabel}}" aria-label="{{ariaLabel}}"{{/unless}} {{#if disabled}}disabled{{/if}}>
+               {{#if glyph}}<span class="action-glyph">{{glyph}}</span>{{/if}}
+               {{#if img}}<img class="ssc-choice-icon-img" src="{{img}}" alt="">{{/if}}
+               {{#if icon}}<i class="{{icon}}"></i>{{/if}}
+               {{#if label}}<span>{{label}}</span>{{/if}}
+            </button>
+         {{/if}}
+      {{/each}}
+   </footer>
+</div>

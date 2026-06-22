@@ -1,0 +1,50 @@
+<div class="ssc-turn-dialog">
+   {{#if slots.length}}
+      {{#each slots}}
+         <section class="ssc-turn-slot {{decisionClass}}">
+            <div class="ssc-turn-slot-main">
+               <strong>Barrier {{displayIndex}}</strong>
+               <span>{{damage}} held damage</span>
+               <span>Sustained {{roundsSustained}} / {{maxRounds}}</span>
+               {{#if decisionLabel}}
+                  <span
+                     class="ssc-turn-choice {{decisionClass}}"
+                  >{{decisionLabel}}</span>
+               {{/if}}
+            </div>
+            <div class="ssc-turn-slot-actions">
+               {{#if canSustain}}
+                  <button
+                     type="button"
+                     data-action="sustain"
+                     data-slot-index="{{index}}"
+                  >
+                     <i class="fa-solid fa-arrows-rotate"></i>
+                     <span>Sustain</span>
+                  </button>
+               {{/if}}
+               {{#if hasPhilosophy}}
+                  <button
+                     type="button"
+                     data-action="philosophy"
+                     data-slot-index="{{index}}"
+                  >
+                     <i class="fa-solid fa-book-bible"></i>
+                     <span>Philosophy</span>
+                  </button>
+               {{/if}}
+               <button
+                  type="button"
+                  data-action="release"
+                  data-slot-index="{{index}}"
+               >
+                  <i class="fa-solid fa-burst"></i>
+                  <span>Release</span>
+               </button>
+            </div>
+         </section>
+      {{/each}}
+   {{else}}
+      <p>No active holding barriers.</p>
+   {{/if}}
+</div>

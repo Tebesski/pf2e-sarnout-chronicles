@@ -1,0 +1,46 @@
+<div class="ssc-templar-panel" {{#if actorId}}data-actor-id="{{actorId}}"{{/if}} data-drag-handle>
+   {{#if empty}}
+      <div class="ssc-empty-state">{{emptyMessage}}</div>
+   {{else}}
+      {{#unless hasDedication}}
+         <div class="ssc-warning">{{dedicationWarning}}</div>
+      {{/unless}}
+
+      <div class="ssc-barrier-body">
+         <section class="ssc-light-column">
+            <div class="ssc-light-cluster">
+               <div class="ssc-light-hp">{{light.value}} / {{light.max}}</div>
+               <div class="{{light.classes}}" data-light-barrier data-tooltip="{{#each light.tooltipLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}">
+                  <img src="{{light.image}}" alt="">
+                  <span class="ssc-flash"></span>
+               </div>
+               <div class="ssc-light-hardness">{{light.hardness}}</div>
+            </div>
+         </section>
+
+         <section class="ssc-holding-row">
+            {{#if holding.length}}
+               {{#each holding}}
+                  <div class="ssc-holding-wrap">
+                     <div class="{{classes}}" data-slot-index="{{index}}" data-tooltip="{{#each tooltipLines}}{{this}}{{#unless @last}}<br>{{/unless}}{{/each}}">
+                        {{#if transitionImage}}
+                           <img class="ssc-slot-transition-image" src="{{transitionImage}}" alt="">
+                        {{/if}}
+                        <img class="ssc-slot-main-image" src="{{image}}" alt="">
+                        <span class="ssc-flash"></span>
+                        {{#if hasDamage}}
+                           <span class="ssc-slot-damage">{{damage}}</span>
+                        {{/if}}
+                        {{#if decisionBadge}}
+                           <span class="ssc-slot-decision {{decisionClass}}" data-slot-index="{{index}}" data-tooltip="{{decisionTooltip}}">{{decisionBadge}}</span>
+                        {{/if}}
+                     </div>
+                  </div>
+               {{/each}}
+            {{else}}
+               <div class="ssc-no-slots">{{noSlotsMessage}}</div>
+            {{/if}}
+         </section>
+      </div>
+   {{/if}}
+</div>

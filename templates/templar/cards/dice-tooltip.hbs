@@ -1,0 +1,20 @@
+<div class="dice-tooltip">
+   <div class="wrapper">
+      {{#each instances}}
+         <section class="tooltip-part damage instance color {{type}}">
+            <header>{{type}} <i class="fa-solid {{icon}}"></i></header>
+            <div class="dice">
+               <header class="part-header flexrow">
+                  <span class="part-formula">{{formula}}</span>
+                  <span class="part-total">{{total}}</span>
+               </header>
+               <ol class="dice-rolls">
+                  {{#each dice}}
+                     <li class="{{classes}}">{{value}}</li>
+                  {{/each}}
+               </ol>
+            </div>
+         </section>
+      {{/each}}
+   </div>
+</div>

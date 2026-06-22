@@ -1,0 +1,25 @@
+<div class="ssc-choice-body ssc-select-body">
+   {{{intro}}}
+   <label class="ssc-select-label">
+      <span>{{label}}</span>
+      <select name="choice">
+         {{#each options}}
+            <option value="{{id}}" {{#if disabled}}disabled{{/if}}>{{label}}</option>
+         {{/each}}
+      </select>
+   </label>
+   <div class="ssc-select-preview" data-preview></div>
+   <footer>
+      {{#each actionButtons}}
+         <button type="button" data-action-btn="{{id}}">
+            {{#if icon}}<i class="{{icon}}"></i>{{/if}}
+            <span>{{label}}</span>
+         </button>
+      {{/each}}
+      <button type="submit">
+         <i class="fa-solid fa-check"></i>
+         <span>{{confirmLabel}}</span>
+      </button>
+      <button type="button" data-cancel>Cancel</button>
+   </footer>
+</div>

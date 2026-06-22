@@ -1,0 +1,22 @@
+<div class="ssc-counteract-dialog">
+   <div class="form-group">
+      <label>DC</label>
+      <input type="number" name="dc" min="1" step="1" value="{{defaultDc}}" autofocus>
+   </div>
+   <div class="form-group">
+      <label>Counteracting Level</label>
+      <input type="number" name="counteractLevel" min="0" step="1" value="{{defaultCounteractLevel}}">
+   </div>
+   <div class="form-group">
+      <label>Target Level</label>
+      <input type="number" name="targetLevel" min="0" step="1" value="{{defaultTargetLevel}}">
+   </div>
+   <div class="form-group">
+      <label>Spellcasting</label>
+      <select name="spellcasting">
+         {{#each spellcastingOptions}}
+            <option value="{{id}}">{{label}}</option>
+         {{/each}}
+      </select>
+   </div>
+</div>

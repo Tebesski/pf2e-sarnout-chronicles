@@ -1,0 +1,17 @@
+{
+   "name": "pf2e-sarnout-chronicles",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "extract": "node scripts/extract-packs.mjs",
+      "build": "node scripts/build-packs.mjs"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "type": "commonjs",
+   "devDependencies": {
+      "@foundryvtt/foundryvtt-cli": "^3.0.3"
+   }
+}

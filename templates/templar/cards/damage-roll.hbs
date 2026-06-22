@@ -1,0 +1,18 @@
+{{#if hasDamage}}
+   <section class="dice-roll damage-roll ssc-templar-card-damage-roll" data-ssc-templar-card-action="expand-roll" data-tooltip-class="pf2e">
+      <div class="dice-result">
+         <div class="dice-formula">
+            {{#each instances}}
+               <span class="damage instance ssc-templar-card-instance" data-tooltip="{{type}}">
+                  {{formula}}
+                  <i class="fa-solid {{icon}} icon" style="color:{{color}}"></i>
+                  <strong>{{total}}</strong>
+               </span>
+            {{/each}}
+         </div>
+         {{{tooltipHtml}}}
+         <h4 class="dice-total"><span class="total">{{total}}</span></h4>
+      </div>
+      <p class="ssc-templar-card-roll-title">{{title}}</p>
+   </section>
+{{/if}}
