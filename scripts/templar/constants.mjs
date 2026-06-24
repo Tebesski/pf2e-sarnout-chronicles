@@ -59,6 +59,7 @@ export const TEMPLAR_ASSETS = {
 
 export const TEMPLAR_SLUGS = {
    dedication: ["templar-dedication"],
+   retributorsOath: ["retributors-oath"],
    reactiveBarrier: ["reactive-barrier"],
    holdingBarrier: ["holding-barrier"],
    shieldBearer: ["shield-bearer"],

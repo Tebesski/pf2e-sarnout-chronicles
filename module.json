@@ -43,10 +43,6 @@
       {
          "name": "Sarnout Chronicles",
          "sorting": "m",
-         "ownership": {
-            "PLAYER": "OBSERVER",
-            "ASSISTANT": "OWNER"
-         },
          "folders": [
             {
                "name": "Archetypes",
@@ -58,6 +54,11 @@
                      "packs": ["templar-feats", "templar-macros"]
                   }
                ]
+            },
+            {
+               "name": "Feats",
+               "sorting": "m",
+               "packs": ["feats-skill", "feats-general"]
             }
          ]
       }
@@ -80,6 +81,30 @@
          "label": "Macros",
          "path": "packs/db/Archetypes/Templar/Macros",
          "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "feats-skill",
+         "label": "Skill Feats",
+         "path": "packs/db/Feats/Skill",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "feats-general",
+         "label": "General Feats",
+         "path": "packs/db/Feats/General",
+         "type": "Item",
          "system": "pf2e",
          "private": false,
          "ownership": {

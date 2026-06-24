@@ -13,6 +13,7 @@ import {
    postInculpationCard,
    postLightBurstCard,
 } from "./templar/cards/light-burst-cards.mjs"
+import { evaluateRetributorsOath } from "./templar/retributor.mjs"
 
 Hooks.once("init", () => {
    game.settings.register(
@@ -71,6 +72,7 @@ Hooks.on("updateActor", (actor) => {
 })
 Hooks.on("createItem", (item) => {
    refreshTemplarBarrierPanel(item.actor)
+   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("preUpdateItem", (item, changes = {}, options = {}, userId = null) => {
    templarActions.confirmBrilliantShardItemUpdate({
@@ -86,6 +88,7 @@ Hooks.on("updateItem", (item, changes) => {
    void templarActions.syncLinkedTemplarEffect({ item })
    void templarActions.executeLastRedoubtEnhancement(item, changes)
    scheduleAdventResistanceRefreshForItem(item)
+   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("preDeleteItem", (item, options = {}, userId = null) =>
    templarActions.confirmBrilliantShardItemDelete({ item, options, userId }),
@@ -94,6 +97,7 @@ Hooks.on("deleteItem", (item) => {
    refreshTemplarBarrierPanel(item.actor)
    void templarActions.syncLinkedTemplarEffect({ item, deleted: true })
    scheduleAdventResistanceRefreshForItem(item)
+   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("combatRound", () => refreshTemplarBarrierPanel())
 
