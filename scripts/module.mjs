@@ -1,4 +1,10 @@
-import { MODULE_ID, TEMPLAR_SETTINGS } from "./templar/constants.mjs"
+import {
+   MODULE_ID,
+   TEMPLAR_SETTINGS,
+   TEMPLAR_FEAT_SLUG_GROUPS,
+   TEMPLAR_SLUGS,
+} from "./templar/constants.mjs"
+import { itemMatchesSlugGroup } from "./templar/effects.mjs"
 import {
    openTemplarBarrierPanel,
    refreshTemplarBarrierPanel,
@@ -13,9 +19,15 @@ import {
    postInculpationCard,
    postLightBurstCard,
 } from "./templar/cards/light-burst-cards.mjs"
-import { evaluateRetributorsOath } from "./templar/retributor.mjs"
 
 Hooks.once("init", () => {
+   CONFIG.PF2E.featTraits.templar = "Templar"
+   CONFIG.PF2E.spellTraits.templar = "Templar"
+   CONFIG.PF2E.actionTraits.templar = "Templar"
+   CONFIG.PF2E.featTraits.barrier = "Barrier"
+   CONFIG.PF2E.spellTraits.barrier = "Barrier"
+   CONFIG.PF2E.actionTraits.barrier = "Barrier"
+
    game.settings.register(
       MODULE_ID,
       TEMPLAR_SETTINGS.autoDealReleasedBarrierDamage,
@@ -70,11 +82,51 @@ Hooks.on("updateToken", (token) => {
 Hooks.on("updateActor", (actor) => {
    refreshTemplarBarrierPanel(actor)
 })
+const BARRIER_TRAIT_GROUPS = [
+   TEMPLAR_SLUGS.reactiveBarrier,
+   TEMPLAR_SLUGS.lightBurst,
+   TEMPLAR_SLUGS.lightShell,
+   TEMPLAR_SLUGS.repentance,
+   TEMPLAR_SLUGS.advent,
+   TEMPLAR_SLUGS.providence,
+   TEMPLAR_SLUGS.lastStronghold,
+]
+
+function autoApplyTemplarTraits(item, changes = null) {
+   const isTemplar = TEMPLAR_FEAT_SLUG_GROUPS.some((slugs) =>
+      itemMatchesSlugGroup(item, slugs),
+   )
+   if (!isTemplar) return
+
+   const traits = changes?.system?.traits?.value ?? item.system?.traits?.value
+   if (!Array.isArray(traits)) return
+
+   const newTraits = new Set(traits)
+   newTraits.add("templar")
+
+   const isBarrier = BARRIER_TRAIT_GROUPS.some((slugs) =>
+      itemMatchesSlugGroup(item, slugs),
+   )
+   if (isBarrier) newTraits.add("barrier")
+
+   if (newTraits.size !== traits.length) {
+      const updatedArray = Array.from(newTraits)
+      if (changes) {
+         foundry.utils.setProperty(changes, "system.traits.value", updatedArray)
+      } else {
+         item.updateSource({ "system.traits.value": updatedArray })
+      }
+   }
+}
+
+Hooks.on("preCreateItem", (item) => {
+   autoApplyTemplarTraits(item)
+})
 Hooks.on("createItem", (item) => {
    refreshTemplarBarrierPanel(item.actor)
-   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("preUpdateItem", (item, changes = {}, options = {}, userId = null) => {
+   autoApplyTemplarTraits(item, changes)
    templarActions.confirmBrilliantShardItemUpdate({
       item,
       changes,
@@ -88,7 +140,6 @@ Hooks.on("updateItem", (item, changes) => {
    void templarActions.syncLinkedTemplarEffect({ item })
    void templarActions.executeLastRedoubtEnhancement(item, changes)
    scheduleAdventResistanceRefreshForItem(item)
-   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("preDeleteItem", (item, options = {}, userId = null) =>
    templarActions.confirmBrilliantShardItemDelete({ item, options, userId }),
@@ -97,7 +148,6 @@ Hooks.on("deleteItem", (item) => {
    refreshTemplarBarrierPanel(item.actor)
    void templarActions.syncLinkedTemplarEffect({ item, deleted: true })
    scheduleAdventResistanceRefreshForItem(item)
-   if (item.actor) evaluateRetributorsOath(item.actor)
 })
 Hooks.on("combatRound", () => refreshTemplarBarrierPanel())
 
