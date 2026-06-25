@@ -40,6 +40,7 @@ import {
 import { playTemplarSound } from "./chat/sounds.mjs"
 import { damageContextFromRoll, templarActions } from "./api.mjs"
 import { actorHasOrdinaryRaisedShield } from "./items.mjs"
+import { debugTemplar } from "./debug.mjs"
 
 let damageWrapped = false
 let contextWrapped = false
@@ -53,6 +54,7 @@ const templarLightMessages = new Set()
 const asSafeAsChurchPhysicalTips = new Set()
 const toolbeltProvidenceDialogContexts = new WeakMap()
 const PHYSICAL_DAMAGE_TYPES = new Set(["bludgeoning", "piercing", "slashing"])
+const DAMAGE_WRAPPER_MARK = "_sscTemplarWrapped"
 
 function blindingBladeDcFromMessage(message) {
    const content = String(message?.content ?? "")
@@ -282,6 +284,15 @@ async function damageForContext(context) {
       : context.total
 }
 
+function nativeDamageFallbackOptions(actor, options) {
+   if (!options?.shieldBlockRequest) return options
+   if (actorHasOrdinaryRaisedShield(actor)) return options
+   return {
+      ...options,
+      shieldBlockRequest: false,
+   }
+}
+
 async function applyContextDamage(
    original,
    actor,
@@ -305,12 +316,14 @@ async function applyReactiveBarrier(original, actor, options, context) {
    const split = templarActions.splitDamageContextForBarrier(actor, context, {
       allowAllProtecting: true,
    })
-   if (!split.barrier?.total) return original.call(actor, options)
+   if (!split.barrier?.total)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    const result = await templarActions.reactiveBarrier({
       actor,
       damage: split.barrier.total,
    })
-   if (!result) return original.call(actor, options)
+   if (!result)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    const remainingEligible = templarActions.reduceDamageContextByAmount
       ? templarActions.reduceDamageContextByAmount(
            split.barrier,
@@ -367,12 +380,14 @@ async function applyLightBurst(original, actor, options, context) {
    const split = templarActions.splitDamageContextForBarrier(actor, context, {
       allowAllProtecting: false,
    })
-   if (!split.barrier?.total) return original.call(actor, options)
+   if (!split.barrier?.total)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    const result = await templarActions.lightBurst({
       actor,
       damage: split.barrier.total,
    })
-   if (!result) return original.call(actor, options)
+   if (!result)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    return original.call(actor, {
       ...options,
       shieldBlockRequest: false,
@@ -383,13 +398,15 @@ async function applyInculpation(original, actor, options, context) {
    const split = templarActions.splitDamageContextForBarrier(actor, context, {
       allowAllProtecting: false,
    })
-   if (!split.barrier?.total) return original.call(actor, options)
+   if (!split.barrier?.total)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    const result = await templarActions.inculpation({
       actor,
       damage: split.barrier.total,
       targetToken: damageSourceToken(actor, options, context),
    })
-   if (!result) return original.call(actor, options)
+   if (!result)
+      return original.call(actor, nativeDamageFallbackOptions(actor, options))
    return original.call(actor, {
       ...options,
       shieldBlockRequest: false,
@@ -410,12 +427,14 @@ async function applyGuardianReactiveBarrier(
          allowAllProtecting: true,
       },
    )
-   if (!split.barrier?.total) return original.call(ally, options)
+   if (!split.barrier?.total)
+      return original.call(ally, nativeDamageFallbackOptions(ally, options))
    const result = await templarActions.reactiveBarrier({
       actor: guardian,
       damage: split.barrier.total,
    })
-   if (!result) return original.call(ally, options)
+   if (!result)
+      return original.call(ally, nativeDamageFallbackOptions(ally, options))
    const remainingEligible = templarActions.reduceDamageContextByAmount
       ? templarActions.reduceDamageContextByAmount(
            split.barrier,
@@ -450,7 +469,8 @@ async function applyGuardianHoldingBarrier(
          allowAllProtecting: true,
       },
    )
-   if (!split.barrier?.total) return original.call(ally, options)
+   if (!split.barrier?.total)
+      return original.call(ally, nativeDamageFallbackOptions(ally, options))
    const hasDefenseMaster = actorHasSlug(guardian, TEMPLAR_SLUGS.defenseMaster)
    const result = await templarActions.holdDamage({
       actor: guardian,
@@ -462,7 +482,8 @@ async function applyGuardianHoldingBarrier(
       bypassIWR: !hasDefenseMaster,
       label: `Holding Barrier for ${ally.name}`,
    })
-   if (!result) return original.call(ally, options)
+   if (!result)
+      return original.call(ally, nativeDamageFallbackOptions(ally, options))
    return applyContextDamage(original, ally, options, split.passthrough)
 }
 
@@ -497,30 +518,65 @@ async function applyAsSafeAsChurch(original, ally, options, context) {
    return null
 }
 
-function findApplyDamagePrototype() {
-   const sample = game.actors?.find?.(
-      (actor) => typeof actor.applyDamage === "function",
-   )
-   let proto = sample
-      ? Object.getPrototypeOf(sample)
-      : CONFIG?.Actor?.documentClass?.prototype
-   while (proto && typeof proto.applyDamage !== "function") {
+function findApplyDamageOwnerPrototype(seed) {
+   let proto = seed
+   while (proto) {
+      const descriptor = Object.getOwnPropertyDescriptor(proto, "applyDamage")
+      if (typeof descriptor?.value === "function") return proto
       proto = Object.getPrototypeOf(proto)
    }
-   return proto
+   return null
 }
 
-function patchDamageApplication() {
-   if (damageWrapped) return
-   const proto = findApplyDamagePrototype()
-   const original = proto?.applyDamage
-   if (typeof original !== "function") return
+function findApplyDamagePrototypes() {
+   const seeds = []
+   const actors = Array.isArray(game.actors?.contents)
+      ? game.actors.contents
+      : Array.from(game.actors ?? [])
+   for (const candidate of actors) {
+      const actor = Array.isArray(candidate) ? candidate[1] : candidate
+      if (typeof actor?.applyDamage === "function") {
+         seeds.push(Object.getPrototypeOf(actor))
+      }
+   }
+   if (CONFIG?.Actor?.documentClass?.prototype) {
+      seeds.push(CONFIG.Actor.documentClass.prototype)
+   }
 
-   damageWrapped = true
-   proto.applyDamage = async function sscTemplarApplyDamage(options = {}) {
+   const prototypes = new Set()
+   for (const seed of seeds) {
+      const owner = findApplyDamageOwnerPrototype(seed)
+      if (owner) prototypes.add(owner)
+   }
+   return [...prototypes]
+}
+
+function applyDamagePrototypeLabel(proto) {
+   return (
+      proto?.constructor?.name ??
+      Object.getPrototypeOf(proto)?.constructor?.name ??
+      "ActorPrototype"
+   )
+}
+
+function buildTemplarApplyDamageWrapper(original) {
+   const wrapper = async function sscTemplarApplyDamage(options = {}) {
       const context = contextFromDamage(options.damage)
-      if (context.total <= 0) return original.call(this, options)
+      if (context.total <= 0)
+         return original.call(this, nativeDamageFallbackOptions(this, options))
       await postAsSafeAsChurchPhysicalTipsForAlly(this, context)
+
+      if (options?.shieldBlockRequest && !options.final) {
+         debugTemplar("Templar damage block request", {
+            actor: this?.name,
+            actorType: this?.type,
+            damageTotal: context.total,
+            canUseBarrier: canUseTemplarBarrier(this),
+            barrierIntact: barrierIsIntact(this),
+            ordinaryRaisedShield: actorHasOrdinaryRaisedShield(this),
+            originalApplyDamage: original.name || "anonymous",
+         })
+      }
 
       if (!shouldOfferTemplarBlock(this, options)) {
          if (options?.shieldBlockRequest && !options.final) {
@@ -538,7 +594,7 @@ function patchDamageApplication() {
                })
             }
          }
-         return original.call(this, options)
+         return original.call(this, nativeDamageFallbackOptions(this, options))
       }
 
       const choice = await templarActions.chooseBarrierReaction({
@@ -564,7 +620,11 @@ function patchDamageApplication() {
       }
       if (choice === "holdingBarrier") {
          const passthrough = await applyHoldingBarrier(this, context)
-         if (!passthrough) return original.call(this, options)
+         if (!passthrough)
+            return original.call(
+               this,
+               nativeDamageFallbackOptions(this, options),
+            )
          return applyContextDamage(original, this, options, passthrough)
       }
       if (choice === "lightBurst") {
@@ -575,7 +635,59 @@ function patchDamageApplication() {
       }
       return this
    }
-   proto.applyDamage._sscTemplarWrapped = true
+   wrapper[DAMAGE_WRAPPER_MARK] = true
+   wrapper._sscTemplarOriginal = original
+   return wrapper
+}
+
+function patchDamageApplication(reason = "unspecified") {
+   const prototypes = findApplyDamagePrototypes()
+   let installed = 0
+   let active = 0
+
+   for (const proto of prototypes) {
+      const current = proto?.applyDamage
+      if (typeof current !== "function") continue
+      if (current[DAMAGE_WRAPPER_MARK]) {
+         active += 1
+         continue
+      }
+
+      proto.applyDamage = buildTemplarApplyDamageWrapper(current)
+      installed += 1
+      active += 1
+      debugTemplar("Templar damage wrapper installed", {
+         reason,
+         prototype: applyDamagePrototypeLabel(proto),
+         wrapped: current.name || "anonymous",
+      })
+   }
+
+   damageWrapped =
+      prototypes.length > 0 &&
+      prototypes.every((proto) => proto?.applyDamage?.[DAMAGE_WRAPPER_MARK])
+
+   if (prototypes.length === 0) {
+      debugTemplar("Templar damage wrapper not installed", {
+         reason,
+         reasonDetail: "No applyDamage prototype found",
+      })
+   } else if (installed === 0) {
+      debugTemplar("Templar damage wrapper already active", {
+         reason,
+         prototypes: prototypes.map(applyDamagePrototypeLabel),
+         active,
+      })
+   }
+
+   return damageWrapped
+}
+
+function scheduleDamageApplicationPatch(reason) {
+   patchDamageApplication(reason)
+   for (const delay of [100, 1000, 3000]) {
+      setTimeout(() => patchDamageApplication(`${reason}+${delay}ms`), delay)
+   }
 }
 
 function getControlledTemplar(messageActor = null) {
@@ -1430,14 +1542,12 @@ function installTemplarChatButtonListeners() {
 export function registerTemplarChatAutomation() {
    patchChatContextMenu()
    Hooks.once("ready", () => {
-      patchDamageApplication()
+      scheduleDamageApplicationPatch("ready")
       patchSpellToMessage()
       installTemplarChatButtonListeners()
       installToolbeltProvidenceReroll()
-      if (!damageWrapped) {
-         Hooks.on("createActor", () => patchDamageApplication())
-         Hooks.on("canvasReady", () => patchDamageApplication())
-      }
+      Hooks.on("createActor", () => patchDamageApplication("createActor"))
+      Hooks.on("canvasReady", () => patchDamageApplication("canvasReady"))
       Hooks.on("createChatMessage", (message) => {
          void automateTemplarLightUse(message)
          void automateTemplarSpellMessage(message)

@@ -39,7 +39,10 @@ export function actorRaisedShieldIsBrilliantShard(actor) {
 }
 
 export function actorHasOrdinaryRaisedShield(actor) {
-   return (
-      actorHasRaisedShield(actor) && !actorRaisedShieldIsBrilliantShard(actor)
+   const raisedShield = actorRaisedShieldItem(actor)
+   return Boolean(
+      raisedShield &&
+         actorHasRaisedShield(actor) &&
+         !isBrilliantShardShieldItem(raisedShield),
    )
 }

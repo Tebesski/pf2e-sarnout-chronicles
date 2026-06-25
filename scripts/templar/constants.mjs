@@ -121,6 +121,7 @@ export const TEMPLAR_FEAT_SLUG_GROUPS = [
    TEMPLAR_SLUGS.scutumFidei,
    TEMPLAR_SLUGS.lightGaol,
    TEMPLAR_SLUGS.blindingBlade,
+   TEMPLAR_SLUGS.retributorsOath,
 ]
 
 export const TEMPLAR_EFFECT_SLUGS = {
