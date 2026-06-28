@@ -22,6 +22,19 @@ import {
 } from "./actors.mjs"
 
 const PHYSICAL_DAMAGE_TYPES = new Set(["bludgeoning", "piercing", "slashing"])
+const asSafeAsChurchPhysicalTips = new Map()
+const MAX_SAFE_AS_CHURCH_TIP_KEYS = 250
+
+function rememberSafeAsChurchTip(key) {
+   if (asSafeAsChurchPhysicalTips.has(key)) return false
+   asSafeAsChurchPhysicalTips.set(key, Date.now())
+   while (asSafeAsChurchPhysicalTips.size > MAX_SAFE_AS_CHURCH_TIP_KEYS) {
+      const oldest = asSafeAsChurchPhysicalTips.keys().next().value
+      if (!oldest) break
+      asSafeAsChurchPhysicalTips.delete(oldest)
+   }
+   return true
+}
 
 export function blindingBladeDcFromMessage(message) {
    const content = String(message?.content ?? "")
@@ -225,8 +238,7 @@ async function postAsSafeAsChurchPhysicalTip(templar, ally, context) {
    if (templarActions.hasTemplarReactionUsed?.(templar)) return
    if (!barrierIsIntact(templar)) return
    const key = safeAsChurchTipKey(templar, ally, context)
-   if (asSafeAsChurchPhysicalTips.has(key)) return
-   asSafeAsChurchPhysicalTips.add(key)
+   if (!rememberSafeAsChurchTip(key)) return
    await ChatMessage.create({
       speaker: ChatMessage.getSpeaker({ actor: templar }),
       whisper: privateRecipientsForActor(templar),
