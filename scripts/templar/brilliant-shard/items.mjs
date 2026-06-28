@@ -11,7 +11,6 @@ import {
    actorItemArray,
    isBrilliantShardShieldItem,
 } from "../items.mjs"
-import { debugTemplar } from "../debug.mjs"
 
 const internalBrilliantShardItemChanges = new Set()
 const deletingBrilliantShardItemIds = new Set()
@@ -41,7 +40,7 @@ export async function removeBrilliantShardItem(actor) {
          .filter((item) => item?.id)
          .map((item) => [item.id, item]),
    )
-   for (const [id, item] of items) {
+   for (const id of items.keys()) {
       if (deletingBrilliantShardItemIds.has(id)) continue
       const liveItem =
          actor?.items?.get?.(id) ??
@@ -51,16 +50,7 @@ export async function removeBrilliantShardItem(actor) {
       internalBrilliantShardItemChanges.add(id)
       try {
          await liveItem.delete?.()
-      } catch (error) {
-         const message = String(error?.message ?? error ?? "")
-         if (!message.includes("does not exist")) {
-            debugTemplar("Brilliant Shard item deletion failed", {
-               actor: actor?.name,
-               item: item?.name ?? liveItem?.name,
-               id,
-               error,
-            })
-         }
+      } catch (_error) {
       } finally {
          internalBrilliantShardItemChanges.delete(id)
          deletingBrilliantShardItemIds.delete(id)

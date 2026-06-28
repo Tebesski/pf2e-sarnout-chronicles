@@ -1,6 +1,5 @@
 import { MODULE_ID } from "./constants.mjs"
 import { getActor } from "./actors.mjs"
-import { debugTemplar } from "./debug.mjs"
 import { degreeLabel, degreeOfSuccessFromRoll } from "./rolls.mjs"
 import { spellRankForActor } from "./state.mjs"
 import { renderTemplarTemplate } from "./templates.mjs"
@@ -40,8 +39,7 @@ function counteractModifierTotal(modifiers = []) {
             check.totalModifier ?? check.modifier ?? check.total ?? check.value,
          )
          if (Number.isFinite(total)) return total
-      } catch (error) {
-         debugTemplar("PF2e CheckModifier counteract total failed", { error })
+      } catch (_error) {
       }
    }
    return modifiers.reduce((sum, modifier) => sum + modifierValue(modifier), 0)
@@ -286,12 +284,8 @@ export async function rollCounteract(
             flavor: `<h4 class="action"><strong>Counteract Check</strong></h4>`,
          })
          messagePosted = Boolean(roll)
-      } catch (error) {
+      } catch (_error) {
          attemptedPf2eCheck = false
-         debugTemplar("PF2e counteract check failed; falling back to Roll", {
-            actor: actor?.name,
-            error,
-         })
       }
    }
 

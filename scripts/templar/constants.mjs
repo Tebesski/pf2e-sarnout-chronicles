@@ -5,7 +5,6 @@ export const TEMPLAR_TEMPLATE_PATH = `${MODULE_PATH}/templates/templar`
 
 export const TEMPLAR_SETTINGS = {
    autoDealReleasedBarrierDamage: "autoDealReleasedBarrierDamage",
-   debugAutomation: "debugAutomation",
 }
 
 export const TEMPLAR_ASSETS = {
@@ -29,6 +28,9 @@ export const TEMPLAR_ASSETS = {
    lightShell: `${MODULE_PATH}/assets/templar/icons/light-shell.png`,
    scutum: `${MODULE_PATH}/assets/templar/icons/scutum.png`,
    scorching: `${MODULE_PATH}/assets/templar/icons/scorching.png`,
+   lastRedoubt: `${MODULE_PATH}/assets/templar/icons/last-stronghold.png`,
+   lastRedoubtAc: `${MODULE_PATH}/assets/templar/icons/ac.png`,
+   lastRedoubtTempHp: `${MODULE_PATH}/assets/templar/icons/hp.png`,
    released: `${MODULE_PATH}/assets/templar/img/released.png`,
    releaseSound: `${MODULE_PATH}/assets/templar/sfx/PaladinEndurePainAbility.ogg`,
    adventSound: `${MODULE_PATH}/assets/templar/sfx/RuneBreak.ogg`,

@@ -15,7 +15,6 @@ import { damageTypeLabel } from "./damage.mjs"
 import { counteract } from "./counteract.mjs"
 import { playSound } from "./audio.mjs"
 import { getActor } from "./actors.mjs"
-import { debugTemplar } from "./debug.mjs"
 import { actorItemArray } from "./items.mjs"
 import { createOrRefreshEffect } from "./effects.mjs"
 import {
@@ -289,13 +288,8 @@ async function rollScorchingReprisalStrike(actor, weaponChoice) {
       } catch (firstError) {
          try {
             return await roll.call(thisArg)
-         } catch (secondError) {
-            debugTemplar("Scorching Reprisal Strike roll candidate failed", {
-               actor: actor?.name,
-               strike: weaponChoice?.label ?? item?.name,
-               firstError,
-               secondError,
-            })
+         } catch (_secondError) {
+            void firstError
          }
       }
    }
@@ -480,18 +474,7 @@ export async function handleScorchingReprisalDamage({
       ) ??
       (fallbackToSingleEffect && effects.length === 1 ? effects[0] : null) ??
       (effects.length === 1 ? effects[0] : null)
-   if (!effect) {
-      debugTemplar("Scorching Reprisal damage roll did not match an effect", {
-         actor: resolved.name,
-         itemId,
-         itemUuid,
-         itemName,
-         itemSlug,
-         options,
-         effects: effects.map((candidate) => effectScorchingData(candidate)),
-      })
-      return null
-   }
+   if (!effect) return null
 
    const data = effectScorchingData(effect)
    let counteractResult = null
@@ -507,11 +490,8 @@ export async function handleScorchingReprisalDamage({
             postSummary: true,
          })
       }
-   } catch (error) {
-      console.warn(`${MODULE_ID} | Scorching Reprisal counteract failed`, error)
-      ui.notifications?.error(
-         "Scorching Reprisal counteract failed. See console for details.",
-      )
+   } catch (_error) {
+      ui.notifications?.error("Scorching Reprisal counteract failed.")
    } finally {
       await effect.delete?.()
    }

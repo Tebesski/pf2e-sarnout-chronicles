@@ -1,6 +1,5 @@
 import { MODULE_ID, TEMPLAR_REACTION_USED_SLUG } from "./constants.mjs"
 import { createOrRefreshEffect } from "./effects.mjs"
-import { debugTemplar } from "./debug.mjs"
 import { slugify } from "./state.mjs"
 
 function activeEncounterRunning() {
@@ -24,13 +23,7 @@ function templarReactionUsedEffects(actor) {
 export function hasTemplarReactionUsed(actor) {
    const effects = templarReactionUsedEffects(actor)
    if (!effects.length) return false
-   if (!activeEncounterRunning()) {
-      debugTemplar("Ignoring Reaction Used outside encounter", {
-         actor: actor?.name,
-         effects: effects.map((effect) => effect.name),
-      })
-      return false
-   }
+   if (!activeEncounterRunning()) return false
    return true
 }
 

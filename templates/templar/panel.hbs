@@ -38,7 +38,9 @@
                   </div>
                {{/each}}
             {{else}}
-               <div class="ssc-no-slots">{{noSlotsMessage}}</div>
+               {{#if noSlotsMessage}}
+                  <div class="ssc-no-slots">{{noSlotsMessage}}</div>
+               {{/if}}
             {{/if}}
          </section>
       </div>

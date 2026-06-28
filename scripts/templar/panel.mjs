@@ -9,6 +9,7 @@ import {
    readTemplarState,
 } from "./state.mjs"
 import { renderTemplarTemplate } from "./templates.mjs"
+import { format, localize } from "./i18n.mjs"
 
 const ApplicationV2 = foundry.applications.api.ApplicationV2
 
@@ -62,17 +63,50 @@ function turnDecisionForCurrentTurn(slot) {
 
 function slotTooltipLines(actor, slot) {
    if (slot.released) {
-      return [`Released Damage ${slot.lastReleasedDamage}`]
+      return [
+         format(
+            "PF2ESC.Templar.BarrierPanel.ReleasedDamage",
+            { damage: slot.lastReleasedDamage },
+            "Released Damage {damage}",
+         ),
+      ]
    }
-   if (!slot.active) return ["Empty holding barrier"]
-   const lines = [`Held Damage ${slot.damage}`]
+   if (!slot.active)
+      return [
+         localize(
+            "PF2ESC.Templar.BarrierPanel.EmptyHoldingBarrier",
+            "Empty holding barrier",
+         ),
+      ]
+   const lines = [
+      format(
+         "PF2ESC.Templar.BarrierPanel.HeldDamage",
+         { damage: slot.damage },
+         "Held Damage {damage}",
+      ),
+   ]
    if (actorHasSlug(actor, TEMPLAR_SLUGS.defenseMaster)) {
       lines.push(
-         `Type: ${(slot.damageTypes ?? [slot.damageType ?? "untyped"]).join(", ")}`,
+         format(
+            "PF2ESC.Templar.BarrierPanel.DamageTypes",
+            {
+               types: (slot.damageTypes ?? [slot.damageType ?? "untyped"]).join(
+                  ", ",
+               ),
+            },
+            "Type: {types}",
+         ),
       )
    }
    lines.push(
-      `Sustained ${holdingSustainCount(slot)} / ${holdingMaxSustainRounds(actor)}`,
+      format(
+         "PF2ESC.Templar.BarrierPanel.Sustained",
+         {
+            current: holdingSustainCount(slot),
+            max: holdingMaxSustainRounds(actor),
+         },
+         "Sustained {current} / {max}",
+      ),
    )
    return lines
 }
@@ -119,9 +153,15 @@ function holdingSlotView(actor, slot) {
               : "",
       decisionTooltip:
          turnDecision === "sustain"
-            ? "Sustained for this turn"
+            ? localize(
+                 "PF2ESC.Templar.BarrierPanel.SustainedForThisTurn",
+                 "Sustained for this turn",
+              )
             : turnDecision === "release"
-              ? "Release at turn end"
+              ? localize(
+                   "PF2ESC.Templar.BarrierPanel.ReleaseAtTurnEnd",
+                   "Release at turn end",
+                )
               : "",
    }
 }
@@ -130,7 +170,10 @@ async function renderPanel(actor) {
    if (!actor) {
       return renderTemplarTemplate("panel", {
          empty: true,
-         emptyMessage: "Select a token or assign a player character.",
+         emptyMessage: localize(
+            "PF2ESC.Templar.BarrierPanel.Empty",
+            "Select a token or assign a player character.",
+         ),
       })
    }
 
@@ -161,12 +204,31 @@ async function renderPanel(actor) {
       : state.light.hardness
    const lightTooltipLines = showsBrilliantShard
       ? [
-           `Brilliant Shard HP ${state.brilliantShard.value} / ${state.brilliantShard.max}`,
-           `Brilliant Shard Hardness ${state.brilliantShard.hardness}`,
+           format(
+              "PF2ESC.Templar.BarrierPanel.BrilliantShardHP",
+              {
+                 value: state.brilliantShard.value,
+                 max: state.brilliantShard.max,
+              },
+              "Brilliant Shard HP {value} / {max}",
+           ),
+           format(
+              "PF2ESC.Templar.BarrierPanel.BrilliantShardHardness",
+              { hardness: state.brilliantShard.hardness },
+              "Brilliant Shard Hardness {hardness}",
+           ),
         ]
       : [
-           `HP ${state.light.value} / ${state.light.max}`,
-           `Hardness ${state.light.hardness}`,
+           format(
+              "PF2ESC.Templar.BarrierPanel.HP",
+              { value: state.light.value, max: state.light.max },
+              "HP {value} / {max}",
+           ),
+           format(
+              "PF2ESC.Templar.BarrierPanel.Hardness",
+              { hardness: state.light.hardness },
+              "Hardness {hardness}",
+           ),
         ]
    if (
       !showsBrilliantShard &&
@@ -174,12 +236,21 @@ async function renderPanel(actor) {
       state.light.baseHardness !== undefined
    ) {
       lightTooltipLines.push(
-         `Advent: base Hardness ${state.light.baseHardness}`,
+         format(
+            "PF2ESC.Templar.BarrierPanel.AdventBaseHardness",
+            { hardness: state.light.baseHardness },
+            "Advent: base Hardness {hardness}",
+         ),
       )
    }
    if (!showsBrilliantShard && state.light.broken) {
       lightTooltipLines.push(
-         state.light.lingering ? "Shattered, Lingering" : "Shattered",
+         state.light.lingering
+            ? localize(
+                 "PF2ESC.Templar.BarrierPanel.ShatteredLingering",
+                 "Shattered, Lingering",
+              )
+            : localize("PF2ESC.Templar.BarrierPanel.Shattered", "Shattered"),
       )
    }
 
@@ -187,10 +258,13 @@ async function renderPanel(actor) {
       actorId: actor.id,
       empty: false,
       hasDedication,
-      dedicationWarning: "Templar Dedication not detected on this actor.",
+      dedicationWarning: localize(
+         "PF2ESC.Templar.BarrierPanel.DedicationMissing",
+         "Templar Dedication not detected on this actor.",
+      ),
       noSlotsMessage: hasHolding
-         ? "No slots available."
-         : "Holding Barrier not detected.",
+         ? localize("PF2ESC.Templar.BarrierPanel.NoSlots", "No slots available.")
+         : "",
       light: {
          value: lightValue,
          max: lightMax,
@@ -395,12 +469,20 @@ export class TemplarBarrierPanel extends ApplicationV2 {
 export function openTemplarBarrierPanel(actorLike = null) {
    const actor = activePanelActor(actorLike)
    if (!actor) {
-      ui.notifications?.warn("Select a token with Templar Dedication first.")
+      ui.notifications?.warn(
+         localize(
+            "PF2ESC.Templar.BarrierPanel.SelectTemplarFirst",
+            "Select a token with Templar Dedication first.",
+         ),
+      )
       return null
    }
    if (!canUseTemplarBarrier(actor)) {
       ui.notifications?.warn(
-         "The selected actor does not have Templar Dedication.",
+         localize(
+            "PF2ESC.Templar.BarrierPanel.SelectedActorMissingDedication",
+            "The selected actor does not have Templar Dedication.",
+         ),
       )
       return null
    }

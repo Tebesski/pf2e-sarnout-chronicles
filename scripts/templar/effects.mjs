@@ -5,7 +5,6 @@ import {
    MODULE_ID,
 } from "./constants.mjs"
 import { getActor } from "./actors.mjs"
-import { debugTemplar } from "./debug.mjs"
 import { slugify } from "./state.mjs"
 
 const effectCreationLocks = new Map()
@@ -74,8 +73,7 @@ export async function createOrRefreshEffect(
             return null
          }
       })
-      .catch((error) => {
-         console.warn(`${MODULE_ID} | Effect creation failed:`, error)
+      .catch((_error) => {
          return null
       })
 
@@ -145,11 +143,6 @@ export async function cleanupLegacyGeneratedTemplarActions({ actor } = {}) {
    const removed = []
    for (const item of resolved.items.filter?.(isLegacyGeneratedTemplarAction) ??
       []) {
-      debugTemplar("Deleting legacy generated Templar action", {
-         actor: resolved.name,
-         item: item.name,
-         slug: item.slug ?? item.system?.slug,
-      })
       await item.delete?.()
       removed.push(item)
    }

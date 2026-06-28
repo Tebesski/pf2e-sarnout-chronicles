@@ -40,15 +40,6 @@ Hooks.once("init", () => {
          default: false,
       },
    )
-   game.settings.register(MODULE_ID, TEMPLAR_SETTINGS.debugAutomation, {
-      name: "Debug Templar automation",
-      hint: "Logs detailed Templar automation decisions to the browser console.",
-      scope: "world",
-      config: true,
-      type: Boolean,
-      default: false,
-   })
-
    registerTemplarControls()
    registerTemplarChatAutomation()
    LightBurstCardManager.initHooks()

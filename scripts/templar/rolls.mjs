@@ -1,5 +1,4 @@
 import { getDamageRollClass } from "./damage.mjs"
-import { debugTemplar } from "./debug.mjs"
 
 function clamp(value, min, max) {
    return Math.max(min, Math.min(max, value))
@@ -154,8 +153,7 @@ export async function rollTemplarDamageFormula(formula, rollOptions = []) {
               : null,
          instances,
       }
-   } catch (error) {
-      debugTemplar("Templar damage formula roll failed", { formula, error })
+   } catch (_error) {
       const fallbackParts = String(formula)
          .split(",")
          .map((value) => value.trim())

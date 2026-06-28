@@ -2,7 +2,6 @@ import {
    LINKED_TEMPLAR_EFFECTS,
 } from "./constants.mjs"
 import { slugify } from "./state.mjs"
-import { debugTemplar } from "./debug.mjs"
 
 const internalLinkedTemplarEffectChanges = new Set()
 
@@ -50,16 +49,7 @@ export async function setLinkedTemplarEffect(actor, config, active) {
          internalLinkedTemplarEffectChanges.add(existing.id)
          try {
             await existing.delete()
-         } catch (error) {
-            const message = String(error?.message ?? error ?? "")
-            if (!message.includes("does not exist")) {
-               debugTemplar("Linked Templar effect deletion failed", {
-                  actor: actor?.name,
-                  effect: existing.name,
-                  id: existing.id,
-                  error,
-               })
-            }
+         } catch (_error) {
          } finally {
             internalLinkedTemplarEffectChanges.delete(existing.id)
          }
