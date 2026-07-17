@@ -19,14 +19,28 @@ import {
    postInculpationCard,
    postLightBurstCard,
 } from "./templar/cards/light-burst-cards.mjs"
+import { ancestryActions } from "./ancestries/api.mjs"
+import { registerAncestryChatAutomation } from "./ancestries/chat.mjs"
+import { registerAncestrySocket } from "./ancestries/socket.mjs"
+import {
+   autoApplyAncestryTraits,
+   registerAncestryTraits,
+} from "./ancestries/traits.mjs"
+import { registerOrcQuickMetabolismDailies } from "./ancestries/orc/dailies.mjs"
+import { registerSpiritVesselMaintenance } from "./ancestries/orc/spirit-vessel.mjs"
+import {
+   normalizeWerecreatureDedicationSource,
+   registerWerecreatureDedicationSlotAutomation,
+} from "./ancestries/orc/werecreature-dedication.mjs"
+import {
+   configureSarnoutLanguages,
+   ensureSarnoutHomebrew,
+   registerSarnoutRuntimeHomebrew,
+} from "./homebrew.mjs"
 
 Hooks.once("init", () => {
-   CONFIG.PF2E.featTraits.templar = "Templar"
-   CONFIG.PF2E.spellTraits.templar = "Templar"
-   CONFIG.PF2E.actionTraits.templar = "Templar"
-   CONFIG.PF2E.featTraits.barrier = "Barrier"
-   CONFIG.PF2E.spellTraits.barrier = "Barrier"
-   CONFIG.PF2E.actionTraits.barrier = "Barrier"
+   registerSarnoutRuntimeHomebrew()
+   registerAncestryTraits()
 
    game.settings.register(
       MODULE_ID,
@@ -41,12 +55,20 @@ Hooks.once("init", () => {
       },
    )
    registerTemplarControls()
+   registerAncestrySocket()
+   registerAncestryChatAutomation()
+   registerWerecreatureDedicationSlotAutomation()
+   registerSpiritVesselMaintenance()
+   registerOrcQuickMetabolismDailies()
    registerTemplarChatAutomation()
    LightBurstCardManager.initHooks()
 
    const module = game.modules.get(MODULE_ID)
    if (module) {
       module.api = {
+         configureSarnoutLanguages,
+         ensureSarnoutHomebrew,
+         ancestries: ancestryActions,
          templar: {
             ...templarActions,
             postBlindingBladeCard,
@@ -111,12 +133,16 @@ function autoApplyTemplarTraits(item, changes = null) {
 }
 
 Hooks.on("preCreateItem", (item) => {
+   normalizeWerecreatureDedicationSource(item)
+   autoApplyAncestryTraits(item)
    autoApplyTemplarTraits(item)
 })
 Hooks.on("createItem", (item) => {
    refreshTemplarBarrierPanel(item.actor)
 })
 Hooks.on("preUpdateItem", (item, changes = {}, options = {}, userId = null) => {
+   normalizeWerecreatureDedicationSource(item, changes)
+   autoApplyAncestryTraits(item, changes)
    autoApplyTemplarTraits(item, changes)
    templarActions.confirmBrilliantShardItemUpdate({
       item,
@@ -265,6 +291,7 @@ Hooks.on("updateCombat", (combat, changed = {}) => {
    scheduleTemplarCombatTurn(combat)
 })
 Hooks.once("ready", () => {
+   void ensureSarnoutHomebrew()
    for (const actor of game.actors ?? []) {
       if (shouldRunActorAutomation(actor)) {
          void templarActions.cleanupLegacyGeneratedTemplarActions({ actor })

@@ -39,8 +39,13 @@ export function canUseTemplarReaction(actor, { notify = false } = {}) {
    return false
 }
 
-export async function applyTemplarReactionUsed(actor) {
+export async function applyTemplarReactionUsed(actor, { description = true } = {}) {
    if (!actor?.createEmbeddedDocuments) return null
+   const effectDescription = description
+      ? {
+           value: "This actor has used a Templar reaction. Sarnout Chronicles blocks further Templar reactions while this effect is active.",
+        }
+      : { value: "" }
    return createOrRefreshEffect(
       actor,
       {
@@ -50,9 +55,7 @@ export async function applyTemplarReactionUsed(actor) {
          system: {
             slug: TEMPLAR_REACTION_USED_SLUG,
             duration: { value: 1, unit: "rounds", expiry: "turn-start" },
-            description: {
-               value: "This actor has used a Templar reaction. Sarnout Chronicles blocks further Templar reactions while this effect is active.",
-            },
+            description: effectDescription,
          },
          flags: {
             [MODULE_ID]: {

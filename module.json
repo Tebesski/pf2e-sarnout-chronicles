@@ -13,7 +13,9 @@
          "discord": "two.bears.high.fiving"
       }
    ],
-   "esmodules": ["scripts/module.mjs"],
+   "esmodules": [
+      "scripts/module.mjs"
+   ],
    "socket": true,
    "relationships": {
       "requires": [
@@ -23,7 +25,9 @@
          }
       ]
    },
-   "styles": ["styles/module.css"],
+   "styles": [
+      "styles/module.css"
+   ],
    "languages": [
       {
          "lang": "en",
@@ -51,14 +55,271 @@
                   {
                      "name": "Templar",
                      "sorting": "m",
-                     "packs": ["templar-feats", "templar-macros"]
+                     "packs": [
+                        "templar-feats",
+                        "templar-macros"
+                     ]
+                  }
+               ]
+            },
+            {
+               "name": "Ancestries",
+               "sorting": "m",
+               "packs": [
+                  "ancestries"
+               ],
+               "folders": [
+                  {
+                     "name": "Hadaganian",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-hadaganian-feats",
+                        "ancestry-hadaganian-features",
+                        "ancestry-hadaganian-abilities",
+                        "ancestry-hadaganian-macros",
+                        "ancestry-hadaganian-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Elf",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-elf-feats",
+                        "ancestry-elf-features",
+                        "ancestry-elf-abilities",
+                        "ancestry-elf-macros",
+                        "ancestry-elf-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Ghibberling",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-ghibberling-feats",
+                        "ancestry-ghibberling-features",
+                        "ancestry-ghibberling-abilities",
+                        "ancestry-ghibberling-macros",
+                        "ancestry-ghibberling-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Aro",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-aro-feats",
+                        "ancestry-aro-features",
+                        "ancestry-aro-abilities",
+                        "ancestry-aro-macros",
+                        "ancestry-aro-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Aviac",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-aviac-feats",
+                        "ancestry-aviac-features",
+                        "ancestry-aviac-abilities",
+                        "ancestry-aviac-macros",
+                        "ancestry-aviac-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Goblin",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-goblin-feats",
+                        "ancestry-goblin-features",
+                        "ancestry-goblin-abilities",
+                        "ancestry-goblin-macros",
+                        "ancestry-goblin-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Ogre",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-ogre-feats",
+                        "ancestry-ogre-features",
+                        "ancestry-ogre-abilities",
+                        "ancestry-ogre-macros",
+                        "ancestry-ogre-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Orc",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-orc-feats",
+                        "ancestry-orc-features",
+                        "ancestry-orc-abilities",
+                        "ancestry-orc-macros",
+                        "ancestry-orc-heritages"
+                     ]
+                  },
+                  {
+                     "name": "The Arisen Zem",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-the-arisen-zem-feats",
+                        "ancestry-the-arisen-zem-features",
+                        "ancestry-the-arisen-zem-abilities",
+                        "ancestry-the-arisen-zem-macros",
+                        "ancestry-the-arisen-zem-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Kobold",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-kobold-feats",
+                        "ancestry-kobold-features",
+                        "ancestry-kobold-abilities",
+                        "ancestry-kobold-macros",
+                        "ancestry-kobold-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Lizardfolk",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-lizardfolk-feats",
+                        "ancestry-lizardfolk-features",
+                        "ancestry-lizardfolk-abilities",
+                        "ancestry-lizardfolk-macros",
+                        "ancestry-lizardfolk-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Minotaur",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-minotaur-feats",
+                        "ancestry-minotaur-features",
+                        "ancestry-minotaur-abilities",
+                        "ancestry-minotaur-macros",
+                        "ancestry-minotaur-heritages"
+                     ]
+                  },
+                  {
+                     "name": "Allogene",
+                     "sorting": "m",
+                     "packs": [
+                        "ancestry-allogene-feats",
+                        "ancestry-allogene-features",
+                        "ancestry-allogene-abilities",
+                        "ancestry-allogene-macros",
+                        "ancestry-allogene-heritages"
+                     ]
+                  }
+               ]
+            },
+            {
+               "name": "Versatile Heritages",
+               "sorting": "m",
+               "packs": [
+                  "versatile-heritages"
+               ],
+               "folders": [
+                  {
+                     "name": "Astral Mutant",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-astral-mutant-feats",
+                        "versatile-heritage-astral-mutant-features",
+                        "versatile-heritage-astral-mutant-abilities",
+                        "versatile-heritage-astral-mutant-macros"
+                     ]
+                  },
+                  {
+                     "name": "Half-Elf",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-half-elf-feats",
+                        "versatile-heritage-half-elf-features",
+                        "versatile-heritage-half-elf-abilities",
+                        "versatile-heritage-half-elf-macros"
+                     ]
+                  },
+                  {
+                     "name": "Half-Orc",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-half-orc-feats",
+                        "versatile-heritage-half-orc-features",
+                        "versatile-heritage-half-orc-abilities",
+                        "versatile-heritage-half-orc-macros"
+                     ]
+                  },
+                  {
+                     "name": "Blessed",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-blessed-feats",
+                        "versatile-heritage-blessed-features",
+                        "versatile-heritage-blessed-abilities",
+                        "versatile-heritage-blessed-macros"
+                     ]
+                  },
+                  {
+                     "name": "Skeleton",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-skeleton-feats",
+                        "versatile-heritage-skeleton-features",
+                        "versatile-heritage-skeleton-abilities",
+                        "versatile-heritage-skeleton-macros"
+                     ]
+                  },
+                  {
+                     "name": "Air-Touched",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-air-touched-feats",
+                        "versatile-heritage-air-touched-features",
+                        "versatile-heritage-air-touched-abilities",
+                        "versatile-heritage-air-touched-macros"
+                     ]
+                  },
+                  {
+                     "name": "Earth-Touched",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-earth-touched-feats",
+                        "versatile-heritage-earth-touched-features",
+                        "versatile-heritage-earth-touched-abilities",
+                        "versatile-heritage-earth-touched-macros"
+                     ]
+                  },
+                  {
+                     "name": "Fire-Touched",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-fire-touched-feats",
+                        "versatile-heritage-fire-touched-features",
+                        "versatile-heritage-fire-touched-abilities",
+                        "versatile-heritage-fire-touched-macros"
+                     ]
+                  },
+                  {
+                     "name": "Water-Touched",
+                     "sorting": "m",
+                     "packs": [
+                        "versatile-heritage-water-touched-feats",
+                        "versatile-heritage-water-touched-features",
+                        "versatile-heritage-water-touched-abilities",
+                        "versatile-heritage-water-touched-macros"
+                     ]
                   }
                ]
             },
             {
                "name": "Feats",
                "sorting": "m",
-               "packs": ["feats-skill", "feats-general"]
+               "packs": [
+                  "feats-skill",
+                  "feats-general"
+               ]
             }
          ]
       }
@@ -105,6 +366,1242 @@
          "label": "General Feats",
          "path": "packs/db/Feats/General",
          "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestries",
+         "label": "Ancestries",
+         "path": "packs/db/Ancestries/Ancestries",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-hadaganian-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Hadaganian/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-hadaganian-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Hadaganian/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-hadaganian-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Hadaganian/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-hadaganian-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Hadaganian/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-hadaganian-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Hadaganian/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-elf-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Elf/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-elf-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Elf/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-elf-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Elf/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-elf-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Elf/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-elf-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Elf/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ghibberling-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Ghibberling/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ghibberling-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Ghibberling/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ghibberling-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Ghibberling/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ghibberling-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Ghibberling/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ghibberling-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Ghibberling/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aro-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Aro/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aro-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Aro/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aro-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Aro/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aro-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Aro/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aro-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Aro/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aviac-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Aviac/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aviac-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Aviac/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aviac-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Aviac/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aviac-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Aviac/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-aviac-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Aviac/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-goblin-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Goblin/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-goblin-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Goblin/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-goblin-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Goblin/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-goblin-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Goblin/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-goblin-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Goblin/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ogre-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Ogre/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ogre-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Ogre/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ogre-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Ogre/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ogre-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Ogre/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-ogre-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Ogre/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-orc-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Orc/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-orc-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Orc/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-orc-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Orc/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-orc-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Orc/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-orc-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Orc/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-the-arisen-zem-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/The Arisen Zem/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-the-arisen-zem-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/The Arisen Zem/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-the-arisen-zem-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/The Arisen Zem/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-the-arisen-zem-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/The Arisen Zem/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-the-arisen-zem-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/The Arisen Zem/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-kobold-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Kobold/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-kobold-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Kobold/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-kobold-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Kobold/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-kobold-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Kobold/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-kobold-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Kobold/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-lizardfolk-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Lizardfolk/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-lizardfolk-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Lizardfolk/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-lizardfolk-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Lizardfolk/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-lizardfolk-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Lizardfolk/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-lizardfolk-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Lizardfolk/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-minotaur-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Minotaur/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-minotaur-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Minotaur/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-minotaur-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Minotaur/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-minotaur-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Minotaur/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-minotaur-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Minotaur/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-allogene-feats",
+         "label": "Feats",
+         "path": "packs/db/Ancestries/Allogene/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-allogene-features",
+         "label": "Features",
+         "path": "packs/db/Ancestries/Allogene/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-allogene-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Ancestries/Allogene/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-allogene-macros",
+         "label": "Macros",
+         "path": "packs/db/Ancestries/Allogene/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "ancestry-allogene-heritages",
+         "label": "Heritages",
+         "path": "packs/db/Ancestries/Allogene/Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritages",
+         "label": "Versatile Heritages",
+         "path": "packs/db/Versatile Heritages/Versatile Heritages",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-astral-mutant-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Astral Mutant/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-astral-mutant-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Astral Mutant/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-astral-mutant-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Astral Mutant/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-astral-mutant-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Astral Mutant/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-elf-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Half-Elf/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-elf-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Half-Elf/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-elf-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Half-Elf/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-elf-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Half-Elf/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-orc-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Half-Orc/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-orc-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Half-Orc/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-orc-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Half-Orc/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-half-orc-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Half-Orc/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-blessed-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Blessed/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-blessed-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Blessed/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-blessed-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Blessed/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-blessed-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Blessed/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-skeleton-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Skeleton/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-skeleton-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Skeleton/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-skeleton-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Skeleton/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-skeleton-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Skeleton/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-air-touched-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Air-Touched/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-air-touched-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Air-Touched/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-air-touched-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Air-Touched/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-air-touched-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Air-Touched/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-earth-touched-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Earth-Touched/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-earth-touched-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Earth-Touched/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-earth-touched-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Earth-Touched/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-earth-touched-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Earth-Touched/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-fire-touched-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Fire-Touched/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-fire-touched-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Fire-Touched/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-fire-touched-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Fire-Touched/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-fire-touched-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Fire-Touched/Macros",
+         "type": "Macro",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-water-touched-feats",
+         "label": "Feats",
+         "path": "packs/db/Versatile Heritages/Water-Touched/Feats",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-water-touched-features",
+         "label": "Features",
+         "path": "packs/db/Versatile Heritages/Water-Touched/Features",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-water-touched-abilities",
+         "label": "Abilities",
+         "path": "packs/db/Versatile Heritages/Water-Touched/Abilities",
+         "type": "Item",
+         "system": "pf2e",
+         "private": false,
+         "ownership": {
+            "PLAYER": "OBSERVER",
+            "ASSISTANT": "OWNER"
+         }
+      },
+      {
+         "name": "versatile-heritage-water-touched-macros",
+         "label": "Macros",
+         "path": "packs/db/Versatile Heritages/Water-Touched/Macros",
+         "type": "Macro",
          "system": "pf2e",
          "private": false,
          "ownership": {

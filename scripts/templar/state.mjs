@@ -19,7 +19,7 @@ function itemSlug(item) {
 }
 
 export function actorHasSlug(actor, slugs) {
-   const wanted = new Set(slugs.map(slugify))
+   const wanted = new Set([slugs].flat().map(slugify))
    return (
       actor?.items?.some((item) => {
          const slug = itemSlug(item)
@@ -33,7 +33,7 @@ export function actorHasSlug(actor, slugs) {
 }
 
 function itemMatchesSlugs(item, slugs) {
-   const wanted = new Set(slugs.map(slugify))
+   const wanted = new Set([slugs].flat().map(slugify))
    const slug = itemSlug(item)
    if (wanted.has(slug)) return true
    const cleanName = slugify(
