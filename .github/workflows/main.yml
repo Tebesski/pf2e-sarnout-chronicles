@@ -13,7 +13,7 @@ jobs:
          contents: write
       steps:
          - name: Checkout Repository
-           uses: actions/checkout@v6
+           uses: actions/checkout@v7
          - name: Modify Module Manifest With Release-Specific Values
            run: |
               TAG="${{ github.event.release.tag_name }}"
